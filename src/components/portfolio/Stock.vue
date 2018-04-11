@@ -12,11 +12,11 @@
             placeholder="Quantity"
             v-model.number="quantity">
         </div>
-        <div class="pull-righ">
+        <div class="pull-right">
           <button
             class="btn btn-success"
             @click="sellStock"
-            :disabled="quantity<=0||!Number.isInteger(quantity)">
+            :disabled="quantity<=0||!Number.isInteger(quantity)||insuffciientQuantity">
             Sell
           </button>
         </div>
@@ -34,6 +34,11 @@ export default {
     }
   },
   props:['stock'],
+  computed:{
+    insuffciientQuantity(){
+      return this.quantity > this.stock.quantity;
+    }
+  },
   methods:{
     ...mapActions({
       placeSellOrder:'sellStock'
