@@ -1,6 +1,6 @@
-# simulated-stock
+# vue-cli
 
-> 一个股票模拟的小demo，vue的练手之作
+> A Vue.js project
 
 ## Build Setup
 

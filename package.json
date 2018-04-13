@@ -1,6 +1,6 @@
 {
-  "name": "simulated-stock",
-  "description": "A simulated stock project",
+  "name": "vue-cli",
+  "description": "A Vue.js project",
   "version": "1.0.0",
   "author": "changyuqing <changyuqing_@outlook.com>",
   "license": "MIT",
