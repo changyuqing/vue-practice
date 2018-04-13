@@ -1,6 +1,6 @@
-# vue-cli
+# vue的一些练习
 
-> A Vue.js project
+使用git的分支实现不同的练习，以后可能还这么用
 
 ## Build Setup
 
