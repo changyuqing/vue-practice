@@ -4,6 +4,7 @@ import App from './App.vue';
 
 import {routes} from './routes';
 import store from './store/store';
+import axios from 'axios';
 
 Vue.use(VueRouter);
 

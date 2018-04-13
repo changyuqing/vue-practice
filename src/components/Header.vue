@@ -24,8 +24,8 @@
             aria-haspopup="true"
             aria-expanded="false">Save & Load <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Save Data</a></li>
-            <li><a href="#">Load Data</a></li>
+            <li><a href="#" @click="saveData">Save Data</a></li>
+            <li><a href="#" @click="loadData">Load Data</a></li>
 
           </ul>
         </li>
@@ -36,30 +36,50 @@
 </template>
 
 <script>
-import {mapActions} from 'vuex'
+import { mapActions } from "vuex";
+import axios from "axios";
 export default {
-  data(){
-    return{
-      isDropdownOpen:false
-    }
+  data() {
+    return {
+      isDropdownOpen: false
+    };
   },
-  computed:{
-    funds(){
+  computed: {
+    funds() {
       return this.$store.getters.funds;
     }
   },
-  methods:{
-    ...mapActions([
-      'randomizeStocks'
-    ]),
-    endDay(){
+  methods: {
+    ...mapActions({
+      randomizeStocks:"randomizeStocks",
+      fetchData:"loadData"
+    }),
+    endDay() {
       this.randomizeStocks();
     },
-    openList(){
+    openList() {
       this.isDropdownOpen = !this.isDropdownOpen;
+    },
+    saveData() {
+      const data = {
+        funds: this.$store.getters.funds,
+        stockPortfolio: this.$store.getters.stockPortfolio,
+        stocks: this.$store.getters.stocks
+      };
+      axios({
+        method: "put",
+        baseURL:"https://vuecli-e7d72.firebaseio.com/",
+        url: "/data.json",
+        data: data
+      }).then(()=>{
+        console.log('success');
+      });
+    },
+    loadData(){
+      this.fetchData();
     }
   }
-}
+};
 </script>
 
 <style>
